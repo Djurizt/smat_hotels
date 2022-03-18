@@ -1,4 +1,15 @@
 {
+  "name": "smat_hotels",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "gbebeJunior & minister",
+  "license": "ISC",
   "dependencies": {
     "axios": "^0.26.0",
     "body-parser": "^1.19.2",
@@ -10,6 +21,7 @@
     "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
     "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
     "node-fetch": "^3.2.0",
     "uuid": "^8.3.2"
   },
