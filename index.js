@@ -4,9 +4,9 @@ const app = express()
 const bodyParser = require('body-parser')
 const displayRoutes = require('express-routemap')
 const mySqlConnection = require('./config/mysql')
-// const userRoutes = require('./routes/users.routes')
-// const billPaymentRoutes = require('./routes/bills_payments.routes')
-// const paymentRoutes = require('./routes/payment.routes')
+const adminRoutes = require('./routes/admin.routes')
+const clientsRoutes = require('./routes/client.routes')
+
 
 const port = process.env.PORT
 
@@ -27,10 +27,9 @@ mySqlConnection.connect(err => {
 
 
 
-app.use(userRoutes)
-// app.use(billPaymentRoutes)
-// app.use(paymentRoutes)
-//app.use(AppRoutes)
+app.use(adminRoutes)
+app.use(clientsRoutes)
+
 
 
 app.get('/', (req, res) => {
@@ -50,7 +49,7 @@ app.use((req, res, next) => {
 
         res.status(404).send({
             status: "error",
-            message: "Seems you got lost. so sorry"
+            message: "This not a valid endpoint"
         })
 
 })
