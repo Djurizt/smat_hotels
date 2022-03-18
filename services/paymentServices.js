@@ -25,7 +25,7 @@ const fetch = require('node-fetch')
 
 
 // //             
-const initalizePayment = (dataBody) => {
+const initializePayment = (data) => {
 
     return axios({
                     method: "post",
@@ -35,8 +35,8 @@ const initalizePayment = (dataBody) => {
                         "Authorization": `Bearer ${process.env.PAYSTACK_SECRET_KEY}`
                     },
                     data: {
-                        "email": dataBody.email,
-                        "amount": parseInt(dataBody.amount),
+                        "email": data.email,
+                        "amount": parseInt(data.amount) * 100 ,
                         "currency": "NGN",
                         "ref": uuidv4()
                     }
@@ -58,7 +58,7 @@ const verifyPayment = (payment_ref) => {
     }
 
 module.exports = {
-    initalizePayment,
+    initializePayment,
     verifyPayment
     
 }

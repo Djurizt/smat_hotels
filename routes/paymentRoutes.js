@@ -1,13 +1,18 @@
 const express = require('express')
 const router = express.Router()
-const clientsController = require('../controllers/clientsControllers')
+const paymentController  = require('../controllers/paymentcontrollers')
+
+
+
+router.post('/payment/initialize', paymentController.createPayment)
+
+router.get('/payment/verify/:payment_ref', paymentController.verifyPayment)
+
+module.exports = router
 
 
 
 
-
-router.get('/verify_otp/:otp/:email', clientsController.verifyOtp)
-router.get('/resendOtp/:phone_number', clientsController.resendOtp )
 
 
 

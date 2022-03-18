@@ -1,5 +1,4 @@
 require('dotenv').config()
-const { json } = require('body-parser')
 const Joi = require('joi')
 const { v4: uuidv4 } = require('uuid')
 //const paymentModel = require('../models/payment.models')
@@ -25,8 +24,8 @@ const createPayment =  (req, res) => {
             throw new Error('error')
         }
         
-        console.log("freee: ", )
-        paymentService.initalizePayment(req.body)
+       // console.log("freee: ", )
+        paymentService.initializePayment(req.body)
         
         .then(checkPayment2 => {
             
