@@ -3,6 +3,24 @@ const { v4: uuidv4 } = require('uuid')
 const Joi = require('Joi')
 // const emailServices = require('../services/email.services')
 const adminModel = require('../models/adminModels')
+const bcrypt = require('bcrypt')
+
+
+const saltRounds = 10;
+
+
+const hashMyPassword = (hashedpassword) =>{
+return new Promise((resolve, reject) =>{
+    bcrypt.hash(hashedpassword, saltRounds, function(err, hash) {
+        // Store hash in your password DB.
+        if(err){
+            reject(err)
+        }
+        resolve(hash)
+    })
+})
+
+}
 
 
 const createAdmin = (req,res) =>{
@@ -38,8 +56,14 @@ adminModel.checkAdminAlreadyExist(req.body.email)
     if(resultAdmin !=""){
         throw new Error ("Admin has already been created")
     }
+    return hashMyPassword(req.body.hashedpassword)
     // console.log('i entered here secondly')
-return adminModel.createAdmin(req.body)
+
+})
+.then(responseFromHashPassword=>{
+    req.body.hashedpassword = responseFromHashPassword
+ 
+    return adminModel.createAdmin(req.body)
 })
 .then(result =>{
         res.status(200).send(

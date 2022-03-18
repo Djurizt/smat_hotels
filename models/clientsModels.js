@@ -6,7 +6,7 @@ const allRooms = () => {
     return new Promise((resolve, reject) => {
 
         mysqlConnection.query({
-            sql:'SELECT * from ROOMS',
+            sql:'SELECT * from rooms',
             values: []
         },
           (err, results, fields) => {
@@ -21,7 +21,7 @@ const getRoomsByAmount = (amount) => {
     return new Promise((resolve, reject) => {
 
         mysqlConnection.query({
-            sql:'SELECT * from ROOMS where amount=?',
+            sql:'SELECT * from rooms where amount=?',
             values: [amount]
         },
           (err, results, fields) => {
@@ -36,7 +36,7 @@ const getRoomsByAmount = (amount) => {
 const bookRoom = (room_id) =>{
     return new Promise((resolve, reject) => {
         mysqlConnection.query({
-            sql:'SELECT * from ROOMS WHERE room_id=? ',
+            sql:'SELECT * from rooms WHERE room_id=? ',
             values: [room_id]
         },
           (err, results, fields) => {
@@ -51,7 +51,7 @@ const checkIfRoomIsAvailable = () =>{
     return new Promise((resolve, reject) => {
 
         mysqlConnection.query({
-            sql:'SELECT * from ROOMS where isAvailable=1',
+            sql:'SELECT * from rooms where isAvailable=1',
             values: []
         },
           (err, results, fields) => {
@@ -66,7 +66,7 @@ const updateRoomStatus = (room_id) =>{
     return new Promise((resolve, reject) => {
 
         mysqlConnection.query({
-            sql:'update ROOMS SET isAvailable=0 where room_id=?',
+            sql:'update rooms SET isAvailable=0 where room_id=?',
             values: [room_id]
         },
           (err, results, fields) => {

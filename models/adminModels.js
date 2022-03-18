@@ -7,7 +7,7 @@ const createAdmin = (data) => {
     return new Promise((resolve, reject) => {
 
         mysqlConnection.query({
-            sql:'INSERT into ADMIN(fullname, othername, email, phone, hashedpassword, gender, admin_id) VALUE(?,?,?,?,?,?,?)',
+            sql:'INSERT into admin(fullname, othername, email, phone, hashedpassword, gender, admin_id) VALUE(?,?,?,?,?,?,?)',
             values: [data.fullname, data.othername, data.email, data.phone, data.hashedpassword, data.gender,data.admin_id]
         },
           (err, results, fields) => {
@@ -22,7 +22,7 @@ const checkAdminAlreadyExist = (email) => {
     return new Promise((resolve, reject) => {
 
         mysqlConnection.query({
-            sql:'SELECT * from ADMIN where email=?',
+            sql:'SELECT * from admin where email=?',
             values: [email]
         },
           (err, results, fields) => {

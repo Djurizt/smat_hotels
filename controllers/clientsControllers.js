@@ -175,39 +175,7 @@ const verifyOtp = async(req, res)=>{
         }
         }
             
-            
-    //     clientModels.getOtp(otp)
-    //    .then(resultFromClientsModels =>{
-        
-    //     if(resultFromClientsModels != ""){
-    //         throw new Error('otp does not match')
-    //     }
-
-    //     const elaspedOtpTime = Date.now() - resultFromClientsModels[0]
-    //     if((Math.floor(elaspedOtpTime / 30000) > process.env.OTPExpirationTime)){
-    //         throw new Error('sorry, your otp has expired')
-    //     }
-    // })
-
-    //    .then(finalResponse => {
-    //    const dataToUpdate = {}
-
-    //    emailServices.readFileAndSendEmail (req.body.email, "WELCOME ONBOARD", dataToUpdate, 'welcome')
-    
-    //    res.status(200).send({
-    //     status: true,
-    //     message: 'otp verification was successful',
-    //     data: finalResponse
-    // })
-    // })
-
-    //   .catch(err => {
-    //    res.status(400).send({
-    //     status: false,
-    //     message: err.message,
-    //     data: []
-    // })
-    // })
+         
 
 const updateClient = () => {
 
