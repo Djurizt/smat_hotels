@@ -2,7 +2,7 @@ require('dotenv').config()
 const { v4: uuidv4 } = require('uuid')
 const Joi = require('Joi')
 // const emailServices = require('../services/email.services')
-const adminModel = require('../models/admin.models')
+const adminModel = require('../models/adminModels')
 
 
 const createAdmin = (req,res) =>{

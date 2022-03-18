@@ -4,20 +4,28 @@ const app = express()
 const bodyParser = require('body-parser')
 const displayRoutes = require('express-routemap')
 const mySqlConnection = require('./config/mysql')
-const adminRoutes = require('./routes/admin.routes')
-const clientsRoutes = require('./routes/client.routes')
+const adminRoutes = require('./routes/adminRoutes')
+const clientsRoutes = require('./routes/clientsRoutes')
+const authRoutes = require('./routes/authRoutes')
+const paymentRoutes = require('./routes/paymentRoutes')
 
 
 const port = process.env.PORT
 
 // parse application/json
-app.use(bodyParser.json())
+
 
 
 app.listen(port, () => {
     console.log(`i am listening on ${port}`)
     displayRoutes(app)
 })
+
+app.use(bodyParser.json())
+app.use(adminRoutes)
+app.use(clientsRoutes)
+app.use(authRoutes)
+app.use(paymentRoutes)
 
 mySqlConnection.connect(err => {
     if (err) throw err.stack
@@ -27,8 +35,6 @@ mySqlConnection.connect(err => {
 
 
 
-app.use(adminRoutes)
-app.use(clientsRoutes)
 
 
 
